@@ -50,6 +50,11 @@
             <version>${orchestrate.version}</version>
         </dependency>
         <dependency>
+            <groupId>nl.geostandaarden.imx.orchestrate</groupId>
+            <artifactId>orchestrate-source-file</artifactId>
+            <version>${orchestrate.version}</version>
+        </dependency>
+        <dependency>
             <groupId>io.netty</groupId>
             <artifactId>netty-resolver-dns-native-macos</artifactId>
             <version>4.1.100.Final</version>
