@@ -28,6 +28,11 @@ public class RestRepository implements DataRepository {
 
   @Override
   public Mono<Map<String, Object>> findOne(ObjectRequest request) {
+    if ("Persoon".equals(request.getObjectType().getName())) {
+      var bsn = request.getObjectKey().get("bsn");
+      return Mono.just(Map.of("burgerservicenummer", bsn, "naam", "Odessa de Jager"));
+    }
+
     return httpClient.get()
         .uri(getObjectURI(request))
         .responseSingle((response, content) -> content.asInputStream())
