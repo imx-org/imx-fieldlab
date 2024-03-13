@@ -1,0 +1,24 @@
+logging:
+  level:
+    root: INFO
+
+spring:
+  autoconfigure:
+    exclude: org.springframework.boot.autoconfigure.graphql.GraphQlAutoConfiguration
+
+management:
+  server:
+    port: 8081
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
+
+orchestrate:
+  sources:
+    brp:
+      type: rest
+      options:
+        baseUrl: https://imx.apps.digilab.network/haalcentraal/api/brp
+        paths:
+          Persoon: personen

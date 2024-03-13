@@ -1,0 +1,33 @@
+lineageNameMapping:
+  hasLineage: geregistreerdMet
+  ObjectLineage: Registratie
+  orchestratedDataElements: bestaatUit
+  OrchestratedDataElements: GeorkestreerdGegeven
+  SourceDataElement: Brongegeven
+  ObjectReference: Object
+  subject: onderwerp
+  property: kenmerk
+  value: waarde
+  objectKey: identificatie
+  objectType: type
+  wasDerivedFrom: isAfgeleidVan
+
+targetModel:
+  loader: yaml
+  location: config/opkoopbescherming.yaml
+
+sourceModels:
+  brp:
+    loader: yaml
+    location: config/brp.yaml
+
+objectTypeMappings:
+  Persoon:
+    - sourceRoot: brp:Persoon
+      propertyMappings:
+        bsn:
+          pathMappings:
+            path: burgerservicenummer
+        naam:
+          pathMappings:
+            path: naam

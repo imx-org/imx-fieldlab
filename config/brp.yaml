@@ -1,0 +1,10 @@
+objectTypes:
+  Persoon:
+    attributes:
+      burgerservicenummer:
+        type: String
+        identifier: true
+        cardinality: 1
+      naam:
+        type: String
+        cardinality: 1

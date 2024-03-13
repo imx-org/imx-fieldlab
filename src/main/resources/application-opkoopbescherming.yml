@@ -1,0 +1,9 @@
+spring:
+  graphql:
+    path: /opkoopbescherming/api
+    graphiql:
+      enabled: true
+      path: /opkoopbescherming
+
+orchestrate:
+  mapping: config/opkoopbescherming.mapping.yaml
