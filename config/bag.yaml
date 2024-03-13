@@ -1,0 +1,24 @@
+objectTypes:
+  AdresseerbaarObject:
+    attributes:
+      identificatie:
+        type: String
+        identifier: true
+        cardinality: 1
+    relations:
+      heeftAlsHoofdadres:
+        target: Nummeraanduiding
+        cardinality: 1
+
+  Nummeraanduiding:
+    attributes:
+      identificatie:
+        type: String
+        identifier: true
+        cardinality: 1
+      huisnummer:
+        type: Integer
+        cardinality: 1
+      postcode:
+        type: String
+        cardinality: 0..1

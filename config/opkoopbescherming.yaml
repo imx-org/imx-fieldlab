@@ -1,10 +1,13 @@
 objectTypes:
-  Persoon:
+  KadastraalOnroerendeZaak:
     attributes:
-      bsn:
+      identificatie:
         type: String
         identifier: true
         cardinality: 1
-      naam:
+      eigenaar:
+        type: String
+        cardinality: 1
+      identificatieNummeraanduiding:
         type: String
         cardinality: 1

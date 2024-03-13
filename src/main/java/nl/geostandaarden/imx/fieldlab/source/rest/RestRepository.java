@@ -59,7 +59,7 @@ public class RestRepository implements DataRepository {
   }
 
   private Mono<Map<String, Object>> getPersoon(ObjectRequest request) {
-    var bsn = request.getObjectKey().get("bsn");
+    var bsn = request.getObjectKey().get("burgerservicenummer");
 
     var requestBody = new HashMap<String, Object>();
     requestBody.put("type", "RaadpleegMetBurgerservicenummer");

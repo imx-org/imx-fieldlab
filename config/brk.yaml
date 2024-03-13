@@ -1,0 +1,50 @@
+objectTypes:
+  OnroerendeZaak:
+    attributes:
+      identificatie:
+        type: String
+        identifier: true
+        cardinality: 1
+    relations:
+      zakelijkGerechtigde:
+        target: NatuurlijkPersoon
+        cardinality: 1
+      zakelijkGerechtigden:
+        target: NatuurlijkPersoon
+        cardinality: 0..*
+
+  NatuurlijkPersoon:
+    attributes:
+      identificatie:
+        type: String
+        identifier: true
+        cardinality: 1
+      bsn:
+        type: String
+        cardinality: 0..1
+
+  LocatieKadastraalObject:
+    attributes:
+      identificatie:
+        type: String
+        identifier: true
+        cardinality: 1
+    relations:
+      heeft:
+        target: OnroerendeZaak
+        cardinality: 1
+        inverseName: locatie
+        inverseCardinality: 0..*
+      betreft:
+        target: ObjectlocatieBinnenland
+        cardinality: 1
+
+  ObjectlocatieBinnenland:
+    attributes:
+      identificatie:
+        type: String
+        identifier: true
+        cardinality: 1
+      adresgegevens:
+        type: String
+        cardinality: 1

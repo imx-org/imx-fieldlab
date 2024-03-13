@@ -16,6 +16,21 @@ management:
 
 orchestrate:
   sources:
+    bag:
+      type: rest
+      options:
+        baseUrl: https://api.bag.kadaster.nl/lvbag/individuelebevragingen/v2
+        headers:
+          X-Api-Key: l7c065746c011c4fc68855ed94d567f2ce
+        paths:
+          AdresseerbaarObject: adresseerbareobjecten
+          Nummeraanduiding: nummeraanduidingen
+
+    brk:
+      type: file
+      options:
+        dataPath: data/brk
+
     brp:
       type: rest
       options:

@@ -17,11 +17,39 @@ targetModel:
   location: config/opkoopbescherming.yaml
 
 sourceModels:
+  bag:
+    loader: yaml
+    location: config/bag.yaml
+  brk:
+    loader: yaml
+    location: config/brk.yaml
   brp:
     loader: yaml
     location: config/brp.yaml
 
+sourceRelations:
+  - sourceType: brk:NatuurlijkPersoon
+    property:
+      name: geregistreerdPersoon
+      target: brp:Persoon
+      cardinality: 1
+      keyMapping:
+        burgerservicenummer: bsn
+
 objectTypeMappings:
+  KadastraalOnroerendeZaak:
+    - sourceRoot: brk:OnroerendeZaak
+      propertyMappings:
+        identificatie:
+          pathMappings:
+            path: identificatie
+        eigenaar:
+          pathMappings:
+            path: zakelijkGerechtigde/geregistreerdPersoon/naam
+        identificatieNummeraanduiding:
+          pathMappings:
+            path: locatie/betreft/adresgegevens
+
   Persoon:
     - sourceRoot: brp:Persoon
       propertyMappings:
@@ -31,3 +59,16 @@ objectTypeMappings:
         naam:
           pathMappings:
             path: naam
+
+  Adres:
+    - sourceRoot: bag:Nummeraanduiding
+      propertyMappings:
+        identificatie:
+          pathMappings:
+            path: identificatie
+        huisnummer:
+          pathMappings:
+            path: huisnummer
+        postcode:
+          pathMappings:
+            path: postcode

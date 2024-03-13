@@ -1,0 +1,27 @@
+[
+  {
+    "identificatie": "OZ0001",
+    "zakelijkGerechtigde": {
+      "identificatie": "P0001"
+    },
+    "zakelijkGerechtigden": [
+      {
+        "identificatie": "P0001"
+      }
+    ]
+  },
+  {
+    "identificatie": "OZ0002",
+    "zakelijkGerechtigde": {
+      "identificatie": "P0002"
+    },
+    "zakelijkGerechtigden": [
+      {
+        "identificatie": "P0002"
+      },
+      {
+        "identificatie": "P0003"
+      }
+    ]
+  }
+]
