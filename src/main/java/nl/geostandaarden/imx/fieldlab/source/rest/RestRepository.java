@@ -47,6 +47,10 @@ public class RestRepository implements DataRepository {
 
   @Override
   public Flux<Map<String, Object>> find(CollectionRequest request) {
+    if ("Persoon".equals(request.getObjectType().getName())) {
+      throw new RuntimeException("Objecttype 'Persoon' does not support collection operations.");
+    }
+
     var uri = getCollectionURI(request);
 
     return httpClient.get()

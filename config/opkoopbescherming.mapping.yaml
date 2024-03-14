@@ -45,7 +45,7 @@ objectTypeMappings:
             path: identificatie
         eigenaar:
           pathMappings:
-            path: zakelijkGerechtigde/geregistreerdPersoon/naam
+            path: zakelijkGerechtigden/geregistreerdPersoon/naam
         identificatieNummeraanduiding:
           pathMappings:
             path: locatie/betreft/adresgegevens

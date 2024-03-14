@@ -7,7 +7,7 @@ objectTypes:
         cardinality: 1
       eigenaar:
         type: String
-        cardinality: 1
+        cardinality: 0..*
       identificatieNummeraanduiding:
         type: String
-        cardinality: 1
+        cardinality: 0..*

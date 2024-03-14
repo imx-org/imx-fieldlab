@@ -6,9 +6,6 @@ objectTypes:
         identifier: true
         cardinality: 1
     relations:
-      zakelijkGerechtigde:
-        target: NatuurlijkPersoon
-        cardinality: 1
       zakelijkGerechtigden:
         target: NatuurlijkPersoon
         cardinality: 0..*
