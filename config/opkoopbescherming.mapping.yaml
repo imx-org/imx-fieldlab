@@ -42,6 +42,15 @@ sourceRelations:
       cardinality: 1
       keyMapping:
         identificatie: adresgegevens
+  - sourceType: brp:Persoon
+    property:
+      name: nummeraanduiding
+      target: bag:Nummeraanduiding
+      cardinality: 0..1
+      inverseName: ingeschrevene
+      inverseCardinality: 0..*
+      keyMapping:
+        identificatie: nummeraanduidingIdentificatie
 
 objectTypeMappings:
   KadastraalOnroerendeZaak:
@@ -59,6 +68,9 @@ objectTypeMappings:
         identificatieAdresseerbaarObject:
           pathMappings:
             path: locatie/betreft/bagAdres/isHoofdadresVan/identificatie
+        bewoner:
+          pathMappings:
+            path: locatie/betreft/bagAdres/ingeschrevene/naam
 
   Persoon:
     - sourceRoot: brp:Persoon

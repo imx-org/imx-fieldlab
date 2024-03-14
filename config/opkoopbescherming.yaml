@@ -14,3 +14,6 @@ objectTypes:
       identificatieAdresseerbaarObject:
         type: String
         cardinality: 0..*
+      bewoner:
+        type: String
+        cardinality: 0..*

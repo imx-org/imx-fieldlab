@@ -50,7 +50,7 @@ public class RestRepository implements DataRepository {
   @Override
   public Flux<Map<String, Object>> find(CollectionRequest request) {
     if ("Persoon".equals(request.getObjectType().getName())) {
-      throw new RuntimeException("Objecttype 'Persoon' does not support collection operations.");
+      return getIngeschrevenen(request);
     }
 
     var uri = getCollectionURI(request);
@@ -78,7 +78,7 @@ public class RestRepository implements DataRepository {
 
     var requestBody = new HashMap<String, Object>();
     requestBody.put("type", "RaadpleegMetBurgerservicenummer");
-    requestBody.put("fields", List.of("naam"));
+    requestBody.put("fields", List.of("burgerservicenummer", "naam"));
     requestBody.put("burgerservicenummer", List.of(bsn));
 
     return httpClient.headers(builder -> builder.set(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE))
@@ -96,14 +96,50 @@ public class RestRepository implements DataRepository {
             return Mono.empty();
           }
 
-          var persoon = ((List<Map<String, Object>>) responseBody.get("personen")).get(0);
+          var persoon = personen.get(0);
           var naam = (Map<String, Object>) persoon.get("naam");
-
           var result = new HashMap<String, Object>();
-          result.put("burgerservicenummer", bsn);
+          result.put("burgerservicenummer", persoon.get("burgerservicenummer"));
           result.put("naam", naam.get("volledigeNaam"));
-
           return Mono.just(result);
+        });
+  }
+
+  private Flux<Map<String, Object>> getIngeschrevenen(CollectionRequest request) {
+    var filter = request.getFilter();
+
+    if (filter == null || !filter.getPath().equals(Path.fromString("nummeraanduidingIdentificatie"))) {
+      throw new OrchestrateException("Filter unsupported: " + filter);
+    }
+
+    var requestBody = new HashMap<String, Object>();
+    requestBody.put("type", "ZoekMetNummeraanduidingIdentificatie");
+    requestBody.put("fields", List.of("burgerservicenummer", "naam"));
+    requestBody.put("nummeraanduidingIdentificatie", filter.getValue());
+
+    return httpClient.headers(builder -> builder.set(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE))
+        .post()
+        .uri(getCollectionURI(request))
+        .send(ByteBufFlux.fromString(Mono.just(writeString(requestBody))))
+        .responseContent()
+        .aggregate()
+        .asString()
+        .flatMapMany(responseString -> {
+          var responseBody = readString(responseString);
+          var personen = ((List<Map<String, Object>>) responseBody.get("personen"));
+
+          if (personen == null) {
+            return Flux.empty();
+          }
+
+          return Flux.fromIterable(personen)
+              .map(persoon -> {
+                var naam = (Map<String, Object>) persoon.get("naam");
+                var result = new HashMap<String, Object>();
+                result.put("burgerservicenummer", persoon.get("burgerservicenummer"));
+                result.put("naam", naam.get("volledigeNaam"));
+                return result;
+              });
         });
   }
 
