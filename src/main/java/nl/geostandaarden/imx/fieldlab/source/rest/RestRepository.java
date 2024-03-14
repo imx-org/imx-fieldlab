@@ -10,10 +10,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
+import nl.geostandaarden.imx.orchestrate.engine.OrchestrateException;
 import nl.geostandaarden.imx.orchestrate.engine.exchange.CollectionRequest;
 import nl.geostandaarden.imx.orchestrate.engine.exchange.DataRequest;
 import nl.geostandaarden.imx.orchestrate.engine.exchange.ObjectRequest;
 import nl.geostandaarden.imx.orchestrate.engine.source.DataRepository;
+import nl.geostandaarden.imx.orchestrate.model.Path;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import reactor.core.publisher.Flux;
@@ -40,7 +42,7 @@ public class RestRepository implements DataRepository {
     return httpClient.get()
         .uri(getObjectURI(request))
         .responseSingle((response, content) -> content.asInputStream())
-        .map(this::parseObject)
+        .map(this::parseResponse)
         .map(JsonMapFlattener::flatten)
         .onErrorComplete();
   }
@@ -53,11 +55,20 @@ public class RestRepository implements DataRepository {
 
     var uri = getCollectionURI(request);
 
-    return httpClient.get()
+    if ("AdresseerbaarObject".equals(request.getObjectType().getName())) {
+      var filter = request.getFilter();
+
+      if (filter.getPath().equals(Path.fromString("heeftAlsHoofdadres"))) {
+        uri = uri.concat("?nummeraanduidingIdentificatie=" + ((Map<String, String>) filter.getValue()).get("identificatie"));
+      }
+    }
+
+    return httpClient.headers(builder -> builder.set("Accept-Crs", "epsg:28992"))
+        .get()
         .uri(uri)
         .responseSingle((response, content) -> content.asInputStream())
-        .map(this::parseCollection)
-        .flatMapMany(resource -> Flux.fromIterable(resource.getData()))
+        .map(this::parseResponse)
+        .flatMapMany(resource -> Flux.fromIterable(mapCollection(resource)))
         .map(JsonMapFlattener::flatten)
         .onErrorComplete();
   }
@@ -126,19 +137,22 @@ public class RestRepository implements DataRepository {
     return "/" + path;
   }
 
-  private ObjectResource parseObject(InputStream content) {
+  private Map<String, Object> parseResponse(InputStream content) {
     try {
-      return jsonMapper.readValue(content, ObjectResource.class);
+      return jsonMapper.readValue(content, Map.class);
     } catch (IOException e) {
       throw new RuntimeException(e);
     }
   }
 
-  private CollectionResource parseCollection(InputStream content) {
-    try {
-      return jsonMapper.readValue(content, CollectionResource.class);
-    } catch (IOException e) {
-      throw new RuntimeException(e);
+  private List<Map<String, Object>> mapCollection(Map<String, Object> resource) {
+    if (resource.containsKey("_embedded")) {
+      return ((Map<String, List<Map<String, Object>>>) resource.get("_embedded"))
+          .values()
+          .iterator()
+          .next();
     }
+
+    throw new OrchestrateException("Could not map collection resource");
   }
 }

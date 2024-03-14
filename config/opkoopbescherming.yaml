@@ -11,3 +11,6 @@ objectTypes:
       identificatieNummeraanduiding:
         type: String
         cardinality: 0..*
+      identificatieAdresseerbaarObject:
+        type: String
+        cardinality: 0..*

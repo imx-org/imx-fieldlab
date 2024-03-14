@@ -9,6 +9,8 @@ objectTypes:
       heeftAlsHoofdadres:
         target: Nummeraanduiding
         cardinality: 1
+        inverseName: isHoofdadresVan
+        inverseCardinality: 0..1
 
   Nummeraanduiding:
     attributes:

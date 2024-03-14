@@ -35,6 +35,13 @@ sourceRelations:
       cardinality: 1
       keyMapping:
         burgerservicenummer: bsn
+  - sourceType: brk:ObjectlocatieBinnenland
+    property:
+      name: bagAdres
+      target: bag:Nummeraanduiding
+      cardinality: 1
+      keyMapping:
+        identificatie: adresgegevens
 
 objectTypeMappings:
   KadastraalOnroerendeZaak:
@@ -48,7 +55,10 @@ objectTypeMappings:
             path: zakelijkGerechtigden/geregistreerdPersoon/naam
         identificatieNummeraanduiding:
           pathMappings:
-            path: locatie/betreft/adresgegevens
+            path: locatie/betreft/bagAdres/identificatie
+        identificatieAdresseerbaarObject:
+          pathMappings:
+            path: locatie/betreft/bagAdres/isHoofdadresVan/identificatie
 
   Persoon:
     - sourceRoot: brp:Persoon
