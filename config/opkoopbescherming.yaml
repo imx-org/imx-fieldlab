@@ -17,3 +17,6 @@ objectTypes:
       bewoner:
         type: String
         cardinality: 0..*
+      wozWaarde:
+        type: Integer
+        cardinality: 0..1

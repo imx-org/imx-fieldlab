@@ -26,6 +26,9 @@ sourceModels:
   brp:
     loader: yaml
     location: config/brp.yaml
+  woz:
+    loader: yaml
+    location: config/woz.yaml
 
 sourceRelations:
   - sourceType: brk:NatuurlijkPersoon
@@ -51,6 +54,15 @@ sourceRelations:
       inverseCardinality: 0..*
       keyMapping:
         identificatie: nummeraanduidingIdentificatie
+  - sourceType: woz:WOZObject
+    property:
+      name: adresseerbaarObject
+      target: bag:AdresseerbaarObject
+      cardinality: 1
+      inverseName: wozObject
+      inverseCardinality: 0..1
+      keyMapping:
+        identificatie: adresseerbaarObjectIdentificatie
 
 objectTypeMappings:
   KadastraalOnroerendeZaak:
@@ -71,6 +83,11 @@ objectTypeMappings:
         bewoner:
           pathMappings:
             path: locatie/betreft/bagAdres/ingeschrevene/naam
+        wozWaarde:
+          pathMappings:
+            path: locatie/betreft/bagAdres/isHoofdadresVan/wozObject/waarde
+          combiner:
+            type: sum
 
   Persoon:
     - sourceRoot: brp:Persoon

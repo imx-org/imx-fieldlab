@@ -37,3 +37,8 @@ orchestrate:
         baseUrl: https://imx.apps.digilab.network/haalcentraal/api/brp
         paths:
           Persoon: personen
+
+    woz:
+      type: file
+      options:
+        dataPath: data/woz
