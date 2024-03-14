@@ -88,15 +88,22 @@ public class RestRepository implements DataRepository {
         .responseContent()
         .aggregate()
         .asString()
-        .map(responseString -> {
+        .flatMap(responseString -> {
           var responseBody = readString(responseString);
+          var personen =((List<Map<String, Object>>) responseBody.get("personen"));
+
+          if (personen == null || personen.isEmpty()) {
+            return Mono.empty();
+          }
+
           var persoon = ((List<Map<String, Object>>) responseBody.get("personen")).get(0);
           var naam = (Map<String, Object>) persoon.get("naam");
 
           var result = new HashMap<String, Object>();
           result.put("burgerservicenummer", bsn);
           result.put("naam", naam.get("volledigeNaam"));
-          return result;
+
+          return Mono.just(result);
         });
   }
 
