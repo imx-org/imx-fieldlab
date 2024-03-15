@@ -20,3 +20,20 @@ objectTypes:
       wozWaarde:
         type: Integer
         cardinality: 0..1
+
+  Woning:
+    attributes:
+      identificatie:
+        type: String
+        identifier: true
+        cardinality: 1
+      huisnummer:
+        type: Integer
+        cardinality: 1
+      postcode:
+        type: String
+        cardinality: 0..1
+    relations:
+      maaktDeelUitVan:
+        target: KadastraalOnroerendeZaak
+        cardinality: 0..*

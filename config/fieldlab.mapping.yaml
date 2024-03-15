@@ -14,7 +14,7 @@ lineageNameMapping:
 
 targetModel:
   loader: yaml
-  location: config/opkoopbescherming.yaml
+  location: config/fieldlab.yaml
 
 sourceModels:
   bag:
@@ -35,14 +35,16 @@ sourceRelations:
     property:
       name: geregistreerdPersoon
       target: brp:Persoon
-      cardinality: 1
+      cardinality: '1'
       keyMapping:
         burgerservicenummer: bsn
   - sourceType: brk:ObjectlocatieBinnenland
     property:
       name: bagAdres
       target: bag:Nummeraanduiding
-      cardinality: 1
+      cardinality: '1'
+      inverseName: isAdresVan
+      inverseCardinality: 0..*
       keyMapping:
         identificatie: adresgegevens
   - sourceType: brp:Persoon
@@ -58,7 +60,7 @@ sourceRelations:
     property:
       name: adresseerbaarObject
       target: bag:AdresseerbaarObject
-      cardinality: 1
+      cardinality: '1'
       inverseName: wozObject
       inverseCardinality: 0..1
       keyMapping:
@@ -89,17 +91,7 @@ objectTypeMappings:
           combiner:
             type: sum
 
-  Persoon:
-    - sourceRoot: brp:Persoon
-      propertyMappings:
-        bsn:
-          pathMappings:
-            path: burgerservicenummer
-        naam:
-          pathMappings:
-            path: naam
-
-  Adres:
+  Woning:
     - sourceRoot: bag:Nummeraanduiding
       propertyMappings:
         identificatie:
@@ -111,3 +103,6 @@ objectTypeMappings:
         postcode:
           pathMappings:
             path: postcode
+        maaktDeelUitVan:
+          pathMappings:
+            path: isAdresVan/locatie/heeft

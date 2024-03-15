@@ -1,9 +1,9 @@
 spring:
   graphql:
-    path: /opkoopbescherming/api
+    path: /fieldlab/api
     graphiql:
       enabled: true
-      path: /opkoopbescherming
+      path: /fieldlab
 
 orchestrate:
-  mapping: config/opkoopbescherming.mapping.yaml
+  mapping: config/fieldlab.mapping.yaml

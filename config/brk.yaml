@@ -35,6 +35,8 @@ objectTypes:
       betreft:
         target: ObjectlocatieBinnenland
         cardinality: 1
+        inverseName: locatie
+        inverseCardinality: 0..*
 
   ObjectlocatieBinnenland:
     attributes:
