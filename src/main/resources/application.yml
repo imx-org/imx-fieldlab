@@ -32,6 +32,11 @@ orchestrate:
           AdresseerbaarObject: adresseerbareobjecten
           Nummeraanduiding: nummeraanduidingen
 
+    bri:
+      type: file
+      options:
+        dataPath: data/bri
+
     brk:
       type: file
       options:

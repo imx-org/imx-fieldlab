@@ -1,0 +1,29 @@
+objectTypes:
+  NatuurlijkPersoon:
+    attributes:
+      aNummer:
+        type: String
+        identifier: true
+        cardinality: 1
+      burgerservicenummer:
+        type: String
+        cardinality: 1
+
+  Verzamelinkomen:
+    attributes:
+      identificatie:
+        type: String
+        identifier: true
+        cardinality: 1
+      belastingjaar:
+        type: String
+        cardinality: 1
+      waarde:
+        type: Double
+        cardinality: 1
+    relations:
+      van:
+        target: NatuurlijkPersoon
+        cardinality: 1
+        inverseName: verzamelinkomen
+        inverseCardinality: 0..*

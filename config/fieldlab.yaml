@@ -47,9 +47,12 @@ objectTypes:
         type: String
         identifier: true
         cardinality: 1
-      geboortedatum:
+      naam:
         type: String
         cardinality: 1
       leeftijd:
         type: Integer
         cardinality: 1
+      inkomen:
+        type: Double
+        cardinality: 0..1

@@ -20,6 +20,9 @@ sourceModels:
   bag:
     loader: yaml
     location: config/bag.yaml
+  bri:
+    loader: yaml
+    location: config/bri.yaml
   brk:
     loader: yaml
     location: config/brk.yaml
@@ -31,6 +34,16 @@ sourceModels:
     location: config/woz.yaml
 
 sourceRelations:
+  - sourceType: bri:NatuurlijkPersoon
+    property:
+      name: brpPersoon
+      target: brp:Persoon
+      cardinality: '1'
+      inverseName: briPersoon
+      inverseCardinality: '1'
+      keyMapping:
+        burgerservicenummer: burgerservicenummer
+
   - sourceType: brk:NatuurlijkPersoon
     property:
       name: geregistreerdPersoon
@@ -119,11 +132,14 @@ objectTypeMappings:
         bsn:
           pathMappings:
             path: burgerservicenummer
-        geboortedatum:
+        naam:
           pathMappings:
-            path: geboortedatum
+            path: naam
         leeftijd:
           pathMappings:
             path: geboortedatum
             map:
               type: age
+        inkomen:
+          pathMappings:
+            path: briPersoon/verzamelinkomen/waarde

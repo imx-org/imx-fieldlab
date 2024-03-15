@@ -1,0 +1,74 @@
+[
+  {
+    "identificatie": "VI0001",
+    "belastingjaar": "2024",
+    "waarde": 80000.00,
+    "van": {
+      "aNummer": "NP0001"
+    }
+  },
+  {
+    "identificatie": "VI0002",
+    "belastingjaar": "2024",
+    "waarde": 35000.00,
+    "van": {
+      "aNummer": "NP0002"
+    }
+  },
+  {
+    "identificatie": "VI0003",
+    "belastingjaar": "2024",
+    "waarde": 45000.00,
+    "van": {
+      "aNummer": "NP0003"
+    }
+  },
+  {
+    "identificatie": "VI0004",
+    "belastingjaar": "2024",
+    "waarde": 0.00,
+    "van": {
+      "aNummer": "NP0004"
+    }
+  },
+  {
+    "identificatie": "VI0005",
+    "belastingjaar": "2024",
+    "waarde": 30000.00,
+    "van": {
+      "aNummer": "NP0005"
+    }
+  },
+  {
+    "identificatie": "VI0006",
+    "belastingjaar": "2024",
+    "waarde": 30000.00,
+    "van": {
+      "aNummer": "NP0006"
+    }
+  },
+  {
+    "identificatie": "VI0007",
+    "belastingjaar": "2024",
+    "waarde": 32356.00,
+    "van": {
+      "aNummer": "NP0007"
+    }
+  },
+  {
+    "identificatie": "VI0008",
+    "belastingjaar": "2024",
+    "waarde": 0.00,
+    "van": {
+      "aNummer": "NP0008"
+    }
+  },
+  {
+    "identificatie": "VI0009",
+    "belastingjaar": "2024",
+    "waarde": 35000.00,
+    "van": {
+      "aNummer": "NP0009"
+    }
+  }
+]
