@@ -5,6 +5,11 @@ logging:
 spring:
   autoconfigure:
     exclude: org.springframework.boot.autoconfigure.graphql.GraphQlAutoConfiguration
+  graphql:
+    path: /fieldlab/api
+    graphiql:
+      enabled: true
+      path: /fieldlab
 
 management:
   server:
@@ -15,6 +20,7 @@ management:
         include: health,info,metrics,prometheus
 
 orchestrate:
+  mapping: config/fieldlab.mapping.yaml
   sources:
     bag:
       type: rest

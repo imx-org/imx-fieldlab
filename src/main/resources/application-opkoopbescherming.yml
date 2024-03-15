@@ -1,9 +1,0 @@
-spring:
-  graphql:
-    path: /fieldlab/api
-    graphiql:
-      enabled: true
-      path: /fieldlab
-
-orchestrate:
-  mapping: config/fieldlab.mapping.yaml
