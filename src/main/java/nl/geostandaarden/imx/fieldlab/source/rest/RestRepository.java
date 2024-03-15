@@ -78,7 +78,7 @@ public class RestRepository implements DataRepository {
 
     var requestBody = new HashMap<String, Object>();
     requestBody.put("type", "RaadpleegMetBurgerservicenummer");
-    requestBody.put("fields", List.of("burgerservicenummer", "naam"));
+    requestBody.put("fields", List.of("burgerservicenummer", "naam.volledigeNaam", "geboorte.datum"));
     requestBody.put("burgerservicenummer", List.of(bsn));
 
     return httpClient.headers(builder -> builder.set(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE))
@@ -114,7 +114,7 @@ public class RestRepository implements DataRepository {
 
     var requestBody = new HashMap<String, Object>();
     requestBody.put("type", "ZoekMetNummeraanduidingIdentificatie");
-    requestBody.put("fields", List.of("burgerservicenummer", "naam"));
+    requestBody.put("fields", List.of("burgerservicenummer", "naam.volledigeNaam", "geboorte.datum"));
     requestBody.put("nummeraanduidingIdentificatie", filter.getValue());
 
     return httpClient.headers(builder -> builder.set(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE))
@@ -134,10 +134,12 @@ public class RestRepository implements DataRepository {
 
           return Flux.fromIterable(personen)
               .map(persoon -> {
-                var naam = (Map<String, Object>) persoon.get("naam");
+                var naam = ((Map<String, Object>) persoon.get("naam")).get("volledigeNaam");
+                var geboortedatum = ((Map<String, Object>) ((Map<String, Object>) persoon.get("geboorte")).get("datum")).get("datum");
                 var result = new HashMap<String, Object>();
                 result.put("burgerservicenummer", persoon.get("burgerservicenummer"));
-                result.put("naam", naam.get("volledigeNaam"));
+                result.put("naam", naam);
+                result.put("geboortedatum", geboortedatum);
                 return result;
               });
         });

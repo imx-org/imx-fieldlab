@@ -8,6 +8,9 @@ objectTypes:
       naam:
         type: String
         cardinality: 1
+      geboortedatum:
+        type: String
+        cardinality: 1
       nummeraanduidingIdentificatie:
         type: String
         cardinality: 0..1

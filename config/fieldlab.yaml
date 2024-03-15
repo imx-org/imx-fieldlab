@@ -37,3 +37,19 @@ objectTypes:
       maaktDeelUitVan:
         target: KadastraalOnroerendeZaak
         cardinality: 0..*
+      heeft:
+        target: Bewoner
+        cardinality: 0..*
+
+  Bewoner:
+    attributes:
+      bsn:
+        type: String
+        identifier: true
+        cardinality: 1
+      geboortedatum:
+        type: String
+        cardinality: 1
+      leeftijd:
+        type: Integer
+        cardinality: 1

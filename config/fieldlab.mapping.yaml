@@ -38,6 +38,7 @@ sourceRelations:
       cardinality: '1'
       keyMapping:
         burgerservicenummer: bsn
+
   - sourceType: brk:ObjectlocatieBinnenland
     property:
       name: bagAdres
@@ -47,6 +48,7 @@ sourceRelations:
       inverseCardinality: 0..*
       keyMapping:
         identificatie: adresgegevens
+
   - sourceType: brp:Persoon
     property:
       name: nummeraanduiding
@@ -56,6 +58,7 @@ sourceRelations:
       inverseCardinality: 0..*
       keyMapping:
         identificatie: nummeraanduidingIdentificatie
+
   - sourceType: woz:WOZObject
     property:
       name: adresseerbaarObject
@@ -106,3 +109,21 @@ objectTypeMappings:
         maaktDeelUitVan:
           pathMappings:
             path: isAdresVan/locatie/heeft
+        heeft:
+          pathMappings:
+            path: ingeschrevene
+
+  Bewoner:
+    - sourceRoot: brp:Persoon
+      propertyMappings:
+        bsn:
+          pathMappings:
+            path: burgerservicenummer
+        geboortedatum:
+          pathMappings:
+            path: geboortedatum
+        leeftijd:
+          pathMappings:
+            path: geboortedatum
+            map:
+              type: age
