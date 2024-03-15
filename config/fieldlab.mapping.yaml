@@ -119,6 +119,11 @@ objectTypeMappings:
         postcode:
           pathMappings:
             path: postcode
+        totaalinkomen:
+          pathMappings:
+            path: ingeschrevene/briPersoon/verzamelinkomen/waarde
+          combiner:
+            type: sum
         maaktDeelUitVan:
           pathMappings:
             path: isAdresVan/locatie/heeft

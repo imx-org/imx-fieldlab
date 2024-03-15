@@ -19,7 +19,7 @@ objectTypes:
         type: String
         cardinality: 1
       waarde:
-        type: Double
+        type: Integer
         cardinality: 1
     relations:
       van:

@@ -11,10 +11,28 @@
   {
     "identificatie": "LKO0002",
     "heeft": {
-      "identificatie": "OZ0001"
+      "identificatie": "OZ0002"
     },
     "betreft": {
       "identificatie": "OLB0002"
+    }
+  },
+  {
+    "identificatie": "LKO0003",
+    "heeft": {
+      "identificatie": "OZ0003"
+    },
+    "betreft": {
+      "identificatie": "OLB0003"
+    }
+  },
+  {
+    "identificatie": "LKO0004",
+    "heeft": {
+      "identificatie": "OZ0004"
+    },
+    "betreft": {
+      "identificatie": "OLB0004"
     }
   }
 ]

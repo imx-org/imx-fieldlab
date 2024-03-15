@@ -33,6 +33,9 @@ objectTypes:
       postcode:
         type: String
         cardinality: 0..1
+      totaalinkomen:
+        type: Integer
+        cardinality: 0..1
     relations:
       maaktDeelUitVan:
         target: KadastraalOnroerendeZaak
@@ -54,5 +57,5 @@ objectTypes:
         type: Integer
         cardinality: 1
       inkomen:
-        type: Double
+        type: Integer
         cardinality: 0..1
