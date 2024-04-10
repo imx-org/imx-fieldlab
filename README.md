@@ -15,7 +15,8 @@ Demo URL: https://imx.apps.digilab.network/fieldlab
 1. IMX ondersteunt nog geen generalisatie in modellen; dit was reeds bekend. Om toch tot een representatieve
    implementatie te komen zijn de modellen "platter" gespecificeerd dan ze daadwerkelijk zijn.
    Zie issues: [#50](https://github.com/imx-org/imx-orchestrate/issues/50) / [#51](https://github.com/imx-org/imx-orchestrate/issues/51).
-2. Er bestaan inconsistenties in de BAG API teb opzichte van het IMBAG model, o.a.:
+2. Er bestaan inconsistenties in de BAG API ten opzichte van het
+   [IMBAG model](https://imbag.github.io/catalogus/hoofdstukken/conceptueelmodel), o.a.:
    - Er zit een dubbele "wrapper" om verblijfsobjecten heen in het JSON schema. Dit kan niet automatisch worden 
     afgehandeld. Er is een standaard patroon (design rule?) nodig voor hoe om te gaan met generalisatie in een API design.   
    - Kenmerk van verblijfsobject heet `gebruiksdoelen` in plaats van `gebruiksdoel` (conform IMBAG).
@@ -61,5 +62,7 @@ de BRP helemaal niet raadplegen, maar dit is momenteel nog niet mogelijk in de m
 
 Sidenotes:
 - Er is geen rekening gehouden met adressen die in de BAG geregistreerd zijn als "nevenadres".
+- Voor de check op gebruiksdoel is nu een CEL-expressie gebruikt. Het zou beter zijn een standaard "contains" mapper
+  (of soortgelijk) beschikbaar te hebben. Zie bevinding 4.
 - Indien `heeftWoonfunctie = false` is er feitelijk geen sprake van een woning, terwijl het objecttype wel zo heet.
   Zou er dan eigenlijk helemaal geen resultaat moeten zijn? Of zou het objecttype hernoemd moeten worden?
