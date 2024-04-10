@@ -33,6 +33,9 @@ objectTypes:
       postcode:
         type: String
         cardinality: 0..1
+      heeftWoonfunctie:
+        type: Boolean
+        cardinality: 1
       totaalinkomen:
         type: Integer
         cardinality: 0..1

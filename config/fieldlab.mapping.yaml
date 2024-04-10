@@ -124,6 +124,14 @@ objectTypeMappings:
             path: ingeschrevene/briPersoon/verzamelinkomen/waarde
           combiner:
             type: sum
+        heeftWoonfunctie:
+          pathMappings:
+            path: isHoofdadresVan/gebruiksdoelen
+            map:
+              type: cel
+              options:
+                expr: '"woonfunctie" in result'
+
         maaktDeelUitVan:
           pathMappings:
             path: isAdresVan/locatie/heeft

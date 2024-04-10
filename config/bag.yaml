@@ -5,11 +5,19 @@ objectTypes:
         type: String
         identifier: true
         cardinality: 1
+      gebruiksdoelen:
+        type: String
+        cardinality: 1..*
     relations:
       heeftAlsHoofdadres:
         target: Nummeraanduiding
         cardinality: 1
         inverseName: isHoofdadresVan
+        inverseCardinality: 0..1
+      heeftAlsNevenadres:
+        target: Nummeraanduiding
+        cardinality: 0..*
+        inverseName: isNevenadresVan
         inverseCardinality: 0..1
 
   Nummeraanduiding:
