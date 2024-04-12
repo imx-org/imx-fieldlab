@@ -43,9 +43,12 @@ objectTypes:
       maaktDeelUitVan:
         target: KadastraalOnroerendeZaak
         cardinality: 0..*
-      heeft:
+      heeftBewoner:
         target: Bewoner
         cardinality: 0..*
+      heeftEigenaar:
+        target: Eigenaar
+        cardinality: 1..*
 
   Bewoner:
     attributes:
@@ -62,3 +65,13 @@ objectTypes:
       inkomen:
         type: Integer
         cardinality: 0..1
+
+  Eigenaar:
+    attributes:
+      bsn:
+        type: String
+        identifier: true
+        cardinality: 1
+      naam:
+        type: String
+        cardinality: 1

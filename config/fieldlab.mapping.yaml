@@ -131,13 +131,15 @@ objectTypeMappings:
               type: cel
               options:
                 expr: '"woonfunctie" in result'
-
         maaktDeelUitVan:
           pathMappings:
             path: isAdresVan/locatie/heeft
-        heeft:
+        heeftBewoner:
           pathMappings:
             path: ingeschrevene
+        heeftEigenaar:
+          pathMappings:
+            path: isAdresVan/locatie/heeft/zakelijkGerechtigden/geregistreerdPersoon
 
   Bewoner:
     - sourceRoot: brp:Persoon
@@ -156,3 +158,13 @@ objectTypeMappings:
         inkomen:
           pathMappings:
             path: briPersoon/verzamelinkomen/waarde
+
+  Eigenaar:
+    - sourceRoot: brp:Persoon
+      propertyMappings:
+        bsn:
+          pathMappings:
+            path: burgerservicenummer
+        naam:
+          pathMappings:
+            path: naam
