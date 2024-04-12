@@ -102,5 +102,21 @@
     "van": {
       "aNummer": "NP0013"
     }
+  },
+  {
+    "identificatie": "VI0014",
+    "belastingjaar": "2024",
+    "waarde": 85000,
+    "van": {
+      "aNummer": "NP0014"
+    }
+  },
+  {
+    "identificatie": "VI0015",
+    "belastingjaar": "2024",
+    "waarde": 31500,
+    "van": {
+      "aNummer": "NP0015"
+    }
   }
 ]

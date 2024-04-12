@@ -30,35 +30,27 @@ Demo URL: https://imx.apps.digilab.network/fieldlab
 
 ## Use case 1: Inkomensafhankelijke huurverhoging
 
-### Controleer adres op woonfunctie
-
-Als een adres hoort bij een verblijfsobject zonder gebruiksdoel "woonfunctie", dan dient de waarde `false` teruggegeven
-te worden voor property `heeftWoonfunctie`.
+Met de volgende query kunnen alle benodigde gegevens in 1 request worden opgevraagd. De orkestratie engine bevraagt
+vervolgens alle verschillende bronnen. De resultaten worden gecombineerd tot 1 document conform het doelmodel.
 
 ```graphql
 query Woning {
-  woning(identificatie: "0518200000747446") {
+  woning(identificatie: "0518200000821306") {
     identificatie
     postcode
     huisnummer
     heeftWoonfunctie
     totaalinkomen
-  }
-}
-```
-
-Bovenstaande query levert als resultaat het stadhuis van Den Haag op. Het totaalinkomen is 0, omdat er in de BRP geen
-personen zijn gevonden die ingeschreven staan op dit adres. Idealiter wil je
-de BRP helemaal niet raadplegen, maar dit is momenteel nog niet mogelijk in de mapping (zie bevinding 3).
-
-```json
-{
-  "woning": {
-    "identificatie": "0518200000747446",
-    "postcode": "2511BT",
-    "huisnummer": 70,
-    "heeftWoonfunctie": false,
-    "totaalinkomen": 0
+    heeftBewoner {
+        bsn
+        naam
+        leeftijd
+        inkomen
+    }
+    heeftEigenaar {
+        bsn
+        naam
+    }
   }
 }
 ```
@@ -69,3 +61,14 @@ Sidenotes:
   (of soortgelijk) beschikbaar te hebben. Zie bevinding 4.
 - Indien `heeftWoonfunctie = false` is er feitelijk geen sprake van een woning, terwijl het objecttype wel zo heet.
   Zou er dan eigenlijk helemaal geen resultaat moeten zijn? Of zou het objecttype hernoemd moeten worden?
+
+Met de volgende identificaties kunnen verschillende scenario's gecontroleerd worden:
+
+- Identificatie: `0518200000821306`
+  - `heeftWoonfunctie = false`, want corresponderend verblijfsobject `0518010000821308` heeft gebruiksdoel `Logiesfunctie`
+  - Bewoners (BRP) en eigenaren (BRK) zijn identiek.
+  - `totaalinkomen = 116500`, want inkomens van bewoner 1 is 85000 en van bewoner 2 is 31500. Beide bewoners zijn ouder dan 23.
+- Identificatie: `0518200000772702`
+  - `heeftWoonfunctie = true`, want corresponderend verblijfsobject `0518010000772703` heeft gebruiksdoel `kantoorfunctie`
+  - Bewoners (BRP) en eigenaren (BRK) is identiek. Er is dus geen sprake van verhuur. 
+  - `totaalinkomen = 80000`, want inkomen van deze bewoner is 80000 en bewoner is ouder dan 23.

@@ -33,5 +33,16 @@
         "identificatie": "P0005"
       }
     ]
+  },
+  {
+    "identificatie": "OZ0005",
+    "zakelijkGerechtigden": [
+      {
+        "identificatie": "P0006"
+      },
+      {
+        "identificatie": "P0007"
+      }
+    ]
   }
 ]

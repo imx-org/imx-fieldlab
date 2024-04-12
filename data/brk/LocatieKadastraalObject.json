@@ -34,5 +34,14 @@
     "betreft": {
       "identificatie": "OLB0004"
     }
+  },
+  {
+    "identificatie": "LKO0005",
+    "heeft": {
+      "identificatie": "OZ0005"
+    },
+    "betreft": {
+      "identificatie": "OLB0005"
+    }
   }
 ]
