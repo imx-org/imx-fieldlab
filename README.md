@@ -2,13 +2,16 @@
 
 Demo URL: https://imx.apps.digilab.network/fieldlab
 
-## Bronnen
+## Configuratie
 
-- BRP ([API docs](https://brp-api.github.io/Haal-Centraal-BRP-bevragen/v2/redoc) / [Dataset](https://github.com/BRP-API/Haal-Centraal-BRP-bevragen/blob/master/src/config/BrpService/test-data.json)): https://imx.apps.digilab.network/haalcentraal/api/brp
-- BAG ([API docs](https://lvbag.github.io/BAG-API/Technische%20specificatie/Redoc/)): https://api.bag.kadaster.nl/lvbag/individuelebevragingen/v2
-- BRK ([Dataset](./data/brk))
-- BRI ([Dataset](./data/bri))
-- WOZ ([Dataset](./data/woz))
+- [Doelmodel](./config/fieldlab.yaml)
+- [Model mapping](./config/fieldlab.mapping.yaml)
+- Bronnen
+  - BRP ([API docs](https://brp-api.github.io/Haal-Centraal-BRP-bevragen/v2/redoc) / [Dataset](https://github.com/BRP-API/Haal-Centraal-BRP-bevragen/blob/master/src/config/BrpService/test-data.json)): https://imx.apps.digilab.network/haalcentraal/api/brp
+  - BAG ([API docs](https://lvbag.github.io/BAG-API/Technische%20specificatie/Redoc/)): https://api.bag.kadaster.nl/lvbag/individuelebevragingen/v2
+  - BRK ([Dataset](./data/brk))
+  - BRI ([Dataset](./data/bri))
+  - WOZ ([Dataset](./data/woz))
 
 ## Bevindingen (algemeen)
 
