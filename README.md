@@ -25,13 +25,14 @@ Demo URL: https://imx.apps.digilab.network/fieldlab
    - Kenmerk van verblijfsobject heet `gebruiksdoelen` in plaats van `gebruiksdoel` (conform IMBAG).
 3. Er is nog geen mechanisme om bepaalde subsets conditioneel te bevragen (in het kader van data minimalisatie).
    Bijvoorbeeld: de BRP dient alleen geraadpleegd te worden wanneer het gebruiksdoel in de BAG "woonfunctie" betreft.
-4. Er zijn nog weinig standaard result mappers beschikbaar, waardoor vaak CEL-expressies nodig zijn. Het zou goed zijn
-   om de standaard set van mappers verder uit te breiden en CEL alleen nodig te maken voor geavanceerde use cases.
+4. Er is nog maar een beperkte set standaard result mappers beschikbaar, waardoor vaak CEL-expressies nodig zijn. Het
+   zou goed zijn om de standaard set van mappers verder uit te breiden en CEL alleen nodig te maken voor geavanceerde
+   use cases.
 
 ## Use case 1: Inkomensafhankelijke huurverhoging
 
 Met de volgende query kunnen alle benodigde gegevens in 1 request worden opgevraagd. De orkestratie engine bevraagt
-vervolgens alle verschillende bronnen. De resultaten worden gecombineerd tot 1 document conform het doelmodel.
+onder de motorkap alle benodigde bronnen en combineert de deelresultaten tot 1 document conform het doelmodel.
 
 ```graphql
 query Woning {
@@ -40,7 +41,7 @@ query Woning {
     postcode
     huisnummer
     heeftWoonfunctie
-    totaalinkomen
+    inkomenIAH
     heeftBewoner {
         bsn
         naam
@@ -65,10 +66,17 @@ Sidenotes:
 Met de volgende identificaties kunnen verschillende scenario's gecontroleerd worden:
 
 - Identificatie: `0518200000821306`
-  - `heeftWoonfunctie = false`, want corresponderend verblijfsobject `0518010000821308` heeft gebruiksdoel `Logiesfunctie`
-  - Bewoners (BRP) en eigenaren (BRK) zijn identiek.
-  - `totaalinkomen = 116500`, want inkomens van bewoner 1 is 85000 en van bewoner 2 is 31500. Beide bewoners zijn ouder dan 23.
+  - `heeftWoonfunctie = false`, want corresponderend verblijfsobject `0518010000821308` heeft gebruiksdoel `Logiesfunctie`.
+  - Bewoners (BRP) en eigenaren (BRK) zijn identiek. Er is dus geen sprake van verhuur.
+  - `inkomenIAH = 116500`, want het inkomen van bewoner 1 is 85000 en van bewoner 2 31500. Beide bewoners zijn ouder dan 23.
 - Identificatie: `0518200000772702`
-  - `heeftWoonfunctie = true`, want corresponderend verblijfsobject `0518010000772703` heeft gebruiksdoel `kantoorfunctie`
-  - Bewoners (BRP) en eigenaren (BRK) is identiek. Er is dus geen sprake van verhuur. 
-  - `totaalinkomen = 80000`, want inkomen van deze bewoner is 80000 en bewoner is ouder dan 23.
+  - `heeftWoonfunctie = true`, want corresponderend verblijfsobject `0518010000772703` heeft gebruiksdoel `Woonfunctie`.
+  - Bewoner (BRP) en eigenaar (BRK) is identiek. Er is dus geen sprake van verhuur. 
+  - `inkomenIAH = 80000`, want inkomen van deze bewoner is 80000 en de bewoner is ouder dan 23.
+- Identificatie: `0518200000617226`
+  - `heeftWoonfunctie = false`, want corresponderend verblijfsobject `0518010000617227` heeft gebruiksdoel `Industriefunctie`.
+  - De eigenaar (BRK) is geen bewoner (BRK). Er is dus mogelijk sprake van verhuur. 
+  - `inkomenIAH = 70000`, want:
+    - Inkomen van Jan de Jager (53) is `30000`.
+    - Inkomen van Anita Jansen (53) is `30000`.
+    - Inkomen van Zeus de Jager (20) is `32356`. Omdat dit persoon onder de 23 jaar is, wordt er `22356` in mindering gebracht en blijft er `10000` over.

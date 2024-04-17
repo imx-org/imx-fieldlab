@@ -119,11 +119,14 @@ objectTypeMappings:
         postcode:
           pathMappings:
             path: postcode
-        totaalinkomen:
+        inkomenIAH:
           pathMappings:
-            path: ingeschrevene/briPersoon/verzamelinkomen/waarde
+            - path: ingeschrevene/briPersoon/verzamelinkomen/waarde
+            - path: ingeschrevene/geboortedatum
+              map:
+                type: age
           combiner:
-            type: sum
+            type: inkomenIAH
         heeftWoonfunctie:
           pathMappings:
             path: isHoofdadresVan/gebruiksdoelen
