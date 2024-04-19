@@ -1,6 +1,7 @@
 # IMX Fieldlab
 
-- Demo URL: https://imx.apps.digilab.network/fieldlab
+- Demo API: https://imx.apps.digilab.network/fieldlab
+- Demonstrator: https://geonovum-labs.github.io/imx-opkoopbescherming/
 - Use cases (ReSpec): https://geonovum.github.io/imx-digilab/
 
 ## Configuratie
