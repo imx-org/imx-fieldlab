@@ -1,7 +1,7 @@
 # IMX Fieldlab
 
-Demo URL: https://imx.apps.digilab.network/fieldlab
-Use cases (ReSpec): https://geonovum.github.io/imx-digilab/
+- Demo URL: https://imx.apps.digilab.network/fieldlab
+- Use cases (ReSpec): https://geonovum.github.io/imx-digilab/
 
 ## Configuratie
 
