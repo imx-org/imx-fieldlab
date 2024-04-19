@@ -1,41 +1,41 @@
 [
   {
-    "identificatie": "051800661638",
+    "identificatie": "WOZ0001",
     "adresseerbaarObjectIdentificatie": "0518010000772703",
     "waarde": 425000
   },
   {
-    "identificatie": "051800534921",
+    "identificatie": "WOZ0002",
     "adresseerbaarObjectIdentificatie": "0518010000412416",
     "waarde": 171000
   },
   {
-    "identificatie": "051800638803",
+    "identificatie": "WOZ0003",
     "adresseerbaarObjectIdentificatie": "0518010000410621",
     "waarde": 2170000
   },
   {
-    "identificatie": "xxxx",
+    "identificatie": "WOZ0004",
     "adresseerbaarObjectIdentificatie": "0518010000821308",
     "waarde": 12300000
   },
   {
-    "identificatie": "xxxx",
+    "identificatie": "WOZ0005",
     "adresseerbaarObjectIdentificatie": "0599010000460735",
     "waarde": 8923000
   },
   {
-    "identificatie": "xxxx",
+    "identificatie": "WOZ0006",
     "adresseerbaarObjectIdentificatie": "0518010000617227",
     "waarde": 4123700
   },
   {
-    "identificatie": "051800909337",
+    "identificatie": "WOZ0007",
     "adresseerbaarObjectIdentificatie": "0518010001752111",
     "waarde": 23543000
   },
   {
-    "identificatie": "xxxx",
+    "identificatie": "WOZ0008",
     "adresseerbaarObjectIdentificatie": "0363010000584806",
     "waarde": 54001000
   }
