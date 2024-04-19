@@ -84,6 +84,24 @@ Met de volgende identificaties kunnen verschillende scenario's gecontroleerd wor
     - Inkomen van Anita Jansen (53) is `30000`.
     - Inkomen van Zeus de Jager (20) is `32356`. Omdat dit persoon onder de 23 jaar is, wordt er `22356` in mindering gebracht en blijft er `10000` over.
 
+## Use case 2: Opkoopbescherming
+
+Met de volgende query kunnen alle benodigde gegevens in 1 request worden opgevraagd. De orkestratie engine bevraagt
+onder de motorkap alle benodigde bronnen en combineert de deelresultaten tot 1 document conform het doelmodel.
+
+```graphql
+query KadastraalOnroerendeZaak {
+  kadastraalOnroerendeZaak(identificatie: "OZ0001") {
+    identificatie
+    eigenaar
+    identificatieNummeraanduiding
+    identificatieAdresseerbaarObject
+    bewoner
+    wozWaarde
+  }
+}
+```
+
 ## Beproefpunten
 
 ### 1. Specificatie eigen informatiebehoefte
