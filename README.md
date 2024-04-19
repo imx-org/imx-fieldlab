@@ -132,9 +132,10 @@ Het doelmodel is volledig met configuratie gerealiseerd, behalve:
 Deze zaken zijn nu geprogrammeerd binnen het standaard raamwerk (door custom mappers/combiners). Door het framework en 
 de model mapping language uit te breiden zou dit in de toekomst ook met configuratie mogelijk kunnen worden.
 
-De query interface (API) levert nu geen "kant-en-klaar" antwoord met de maximale huurverhoging, maar dit wordt door de UI
-berekend obv de gegevens uit het doelmodel. Mogelijk zou dit ook door de orkestratie mogelijk kunnen worden met een
-andere mapping of door orkestraties te "stapelen". Dit zou in een eventueel vervolg meegenomen kunnen worden.
+De query interface (API) levert nu geen "kant-en-klaar" antwoord met de maximale huurverhoging, maar dit zou in een UI
+applicatie berekend kunnen worden obv de gegevens uit het doelmodel. Mogelijk zou dit ook door de orkestratie
+kunnen worden berekend met een andere mapping of door orkestraties te "stapelen". Dit zou in een eventueel vervolg
+onderzocht kunnen worden.
 
 _Kan een ontwikkelaar zelf nog een stukje Java erbij schrijven (een hook) en is dit nodig in de huidige situatie?_ 
 
