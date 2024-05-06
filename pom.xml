@@ -37,7 +37,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <orchestrate.version>0.1.7</orchestrate.version>
-        <spring-boot.version>3.2.4</spring-boot.version>
+        <spring-boot.version>3.2.5</spring-boot.version>
         <lombok.version>1.18.32</lombok.version>
         <auto-service.version>1.1.1</auto-service.version>
         <netty-resolver-dns-native-macos.version>4.1.109.Final</netty-resolver-dns-native-macos.version>
