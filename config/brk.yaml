@@ -4,46 +4,46 @@ objectTypes:
       identificatie:
         type: String
         identifier: true
-        cardinality: 1
+        multiplicity: 1
     relations:
       zakelijkGerechtigden:
         target: NatuurlijkPersoon
-        cardinality: 0..*
+        multiplicity: 0..*
 
   NatuurlijkPersoon:
     attributes:
       identificatie:
         type: String
         identifier: true
-        cardinality: 1
+        multiplicity: 1
       bsn:
         type: String
-        cardinality: 0..1
+        multiplicity: 0..1
 
   LocatieKadastraalObject:
     attributes:
       identificatie:
         type: String
         identifier: true
-        cardinality: 1
+        multiplicity: 1
     relations:
       heeft:
         target: OnroerendeZaak
-        cardinality: 1
+        multiplicity: 1
         inverseName: locatie
-        inverseCardinality: 0..*
+        inverseMultiplicity: 0..*
       betreft:
         target: ObjectlocatieBinnenland
-        cardinality: 1
+        multiplicity: 1
         inverseName: locatie
-        inverseCardinality: 0..*
+        inverseMultiplicity: 0..*
 
   ObjectlocatieBinnenland:
     attributes:
       identificatie:
         type: String
         identifier: true
-        cardinality: 1
+        multiplicity: 1
       adresgegevens:
         type: String
-        cardinality: 1
+        multiplicity: 1

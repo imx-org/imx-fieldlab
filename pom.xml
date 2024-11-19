@@ -36,11 +36,11 @@
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <orchestrate.version>0.1.8</orchestrate.version>
-        <spring-boot.version>3.3.3</spring-boot.version>
-        <lombok.version>1.18.34</lombok.version>
+        <orchestrate.version>0.1.9</orchestrate.version>
+        <spring-boot.version>3.3.5</spring-boot.version>
+        <lombok.version>1.18.36</lombok.version>
         <auto-service.version>1.1.1</auto-service.version>
-        <netty-resolver-dns-native-macos.version>4.1.113.Final</netty-resolver-dns-native-macos.version>
+        <netty-resolver-dns-native-macos.version>4.1.115.Final</netty-resolver-dns-native-macos.version>
         <maven-compiler-plugin.version>3.13.0</maven-compiler-plugin.version>
     </properties>
 

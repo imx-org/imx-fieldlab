@@ -4,26 +4,26 @@ objectTypes:
       aNummer:
         type: String
         identifier: true
-        cardinality: 1
+        multiplicity: 1
       burgerservicenummer:
         type: String
-        cardinality: 1
+        multiplicity: 1
 
   Verzamelinkomen:
     attributes:
       identificatie:
         type: String
         identifier: true
-        cardinality: 1
+        multiplicity: 1
       belastingjaar:
         type: String
-        cardinality: 1
+        multiplicity: 1
       waarde:
         type: Integer
-        cardinality: 1
+        multiplicity: 1
     relations:
       van:
         target: NatuurlijkPersoon
-        cardinality: 1
+        multiplicity: 1
         inverseName: verzamelinkomen
-        inverseCardinality: 0..*
+        inverseMultiplicity: 0..*

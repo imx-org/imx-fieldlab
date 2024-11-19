@@ -38,9 +38,9 @@ sourceRelations:
     property:
       name: brpPersoon
       target: brp:Persoon
-      cardinality: '1'
+      multiplicity: '1'
       inverseName: briPersoon
-      inverseCardinality: '1'
+      inverseMultiplicity: '1'
       keyMapping:
         burgerservicenummer: burgerservicenummer
 
@@ -48,7 +48,7 @@ sourceRelations:
     property:
       name: geregistreerdPersoon
       target: brp:Persoon
-      cardinality: '1'
+      multiplicity: '1'
       keyMapping:
         burgerservicenummer: bsn
 
@@ -56,9 +56,9 @@ sourceRelations:
     property:
       name: bagAdres
       target: bag:Nummeraanduiding
-      cardinality: '1'
+      multiplicity: '1'
       inverseName: isAdresVan
-      inverseCardinality: 0..*
+      inverseMultiplicity: 0..*
       keyMapping:
         identificatie: adresgegevens
 
@@ -66,9 +66,9 @@ sourceRelations:
     property:
       name: nummeraanduiding
       target: bag:Nummeraanduiding
-      cardinality: 0..1
+      multiplicity: 0..1
       inverseName: ingeschrevene
-      inverseCardinality: 0..*
+      inverseMultiplicity: 0..*
       keyMapping:
         identificatie: nummeraanduidingIdentificatie
 
@@ -76,9 +76,9 @@ sourceRelations:
     property:
       name: adresseerbaarObject
       target: bag:AdresseerbaarObject
-      cardinality: '1'
+      multiplicity: '1'
       inverseName: wozObject
-      inverseCardinality: 0..1
+      inverseMultiplicity: 0..1
       keyMapping:
         identificatie: adresseerbaarObjectIdentificatie
 

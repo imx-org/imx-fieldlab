@@ -4,31 +4,31 @@ objectTypes:
       identificatie:
         type: String
         identifier: true
-        cardinality: 1
+        multiplicity: 1
       gebruiksdoelen:
         type: String
-        cardinality: 1..*
+        multiplicity: 1..*
     relations:
       heeftAlsHoofdadres:
         target: Nummeraanduiding
-        cardinality: 1
+        multiplicity: 1
         inverseName: isHoofdadresVan
-        inverseCardinality: 0..1
+        inverseMultiplicity: 0..1
       heeftAlsNevenadres:
         target: Nummeraanduiding
-        cardinality: 0..*
+        multiplicity: 0..*
         inverseName: isNevenadresVan
-        inverseCardinality: 0..1
+        inverseMultiplicity: 0..1
 
   Nummeraanduiding:
     attributes:
       identificatie:
         type: String
         identifier: true
-        cardinality: 1
+        multiplicity: 1
       huisnummer:
         type: Integer
-        cardinality: 1
+        multiplicity: 1
       postcode:
         type: String
-        cardinality: 0..1
+        multiplicity: 0..1

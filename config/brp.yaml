@@ -4,13 +4,13 @@ objectTypes:
       burgerservicenummer:
         type: String
         identifier: true
-        cardinality: 1
+        multiplicity: 1
       naam:
         type: String
-        cardinality: 1
+        multiplicity: 1
       geboortedatum:
         type: String
-        cardinality: 1
+        multiplicity: 1
       nummeraanduidingIdentificatie:
         type: String
-        cardinality: 0..1
+        multiplicity: 0..1

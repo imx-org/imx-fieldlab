@@ -4,74 +4,74 @@ objectTypes:
       identificatie:
         type: String
         identifier: true
-        cardinality: 1
+        multiplicity: 1
       eigenaar:
         type: String
-        cardinality: 0..*
+        multiplicity: 0..*
       identificatieNummeraanduiding:
         type: String
-        cardinality: 0..*
+        multiplicity: 0..*
       identificatieAdresseerbaarObject:
         type: String
-        cardinality: 0..*
+        multiplicity: 0..*
       bewoner:
         type: String
-        cardinality: 0..*
+        multiplicity: 0..*
       wozWaarde:
         type: Integer
-        cardinality: 0..1
+        multiplicity: 0..1
 
   Woning:
     attributes:
       identificatie:
         type: String
         identifier: true
-        cardinality: 1
+        multiplicity: 1
       huisnummer:
         type: Integer
-        cardinality: 1
+        multiplicity: 1
       postcode:
         type: String
-        cardinality: 0..1
+        multiplicity: 0..1
       heeftWoonfunctie:
         type: Boolean
-        cardinality: 1
+        multiplicity: 1
       inkomenIAH:
         type: Integer
-        cardinality: 0..1
+        multiplicity: 0..1
     relations:
       maaktDeelUitVan:
         target: KadastraalOnroerendeZaak
-        cardinality: 0..*
+        multiplicity: 0..*
       heeftBewoner:
         target: Bewoner
-        cardinality: 0..*
+        multiplicity: 0..*
       heeftEigenaar:
         target: Eigenaar
-        cardinality: 1..*
+        multiplicity: 1..*
 
   Bewoner:
     attributes:
       bsn:
         type: String
         identifier: true
-        cardinality: 1
+        multiplicity: 1
       naam:
         type: String
-        cardinality: 1
+        multiplicity: 1
       leeftijd:
         type: Integer
-        cardinality: 1
+        multiplicity: 1
       inkomen:
         type: Integer
-        cardinality: 0..1
+        multiplicity: 0..1
 
   Eigenaar:
     attributes:
       bsn:
         type: String
         identifier: true
-        cardinality: 1
+        multiplicity: 1
       naam:
         type: String
-        cardinality: 1
+        multiplicity: 1

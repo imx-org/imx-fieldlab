@@ -4,10 +4,10 @@ objectTypes:
       identificatie:
         type: String
         identifier: true
-        cardinality: 1
+        multiplicity: 1
       adresseerbaarObjectIdentificatie:
         type: String
-        cardinality: 1
+        multiplicity: 1
       waarde:
         type: Integer
-        cardinality: 1
+        multiplicity: 1
